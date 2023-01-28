@@ -1,0 +1,11 @@
+<script>
+
+    function getParamByUrl(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('postSlug');
+        return myParam;
+    }
+
+    console.log(getParamByUrl());
+
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./source1.js"></script>
+    <script src="./source2.js"></script>
+    <link rel="stylesheet" href="./source1.css">
+    <link rel="stylesheet" href="./source2.css">
+    <style>
+        #lista{
+            color: green;
+        }
+    </style>
+    <style>
+        #elementoNovo{
+            color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="red" style="color: red;">Meu texto de teste</div>
+    Denpendências:<br>
+    <div id="lista"></div>
+    <hr>
+    Style.css:<br>
+    <div id="capturaCSS"></div>
+
+    <script>
+        var headSources = [];
+        var inlineStyles = [];
+        
+        // Busca por elementos com src ou href nos elementos script e link
+        var scripts = document.getElementsByTagName('script');
+        for (var i = 0; i < scripts.length; i++) {
+            if (scripts[i].hasAttribute('src')) {
+                headSources.push(scripts[i].getAttribute('src'));
+            }
+        }
+        var links = document.getElementsByTagName('link');
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].hasAttribute('href')) {
+                headSources.push(links[i].getAttribute('href'));
+            }
+        }
+    
+        // preenche a div com os elementos encontrados
+        document.getElementById('lista').innerHTML = headSources.join('<br>import "./html/page_files/', '<br>');
+        document.getElementById('capturaCSS').innerHTML += inlineStyles.join('<br>');
+
+        var styles = document.querySelectorAll('style');
+        for (var i = 0; i < styles.length; i++) {
+            inlineStyles.push(styles[i].innerHTML);
+        }
+        document.getElementById('capturaCSS').innerHTML += inlineStyles.join('<br>');
+
+
+
+    </script>
+    
+    
+</body>
+</html>

@@ -17,6 +17,8 @@ class MountToStatic {
         foreach ($articles as $article) {
             if ($article != "." && $article != "..") {
                 $article_content = file_get_contents("$articles_path$article");
+                $title = $this->getTitle($article_content);
+                $header = str_replace("<title>Fort Planos - Fort Planos | O todo de planos de saúde</title>", "<title>$title</title>", $header);
                 $article_content = $header . $article_content . $footer;
 
                 $static_file = fopen("$static_path$article", "w");
@@ -27,6 +29,14 @@ class MountToStatic {
             }
         }
     }
+
+    public function getTitle($html) {
+        preg_match("/<h[1-6](.*?)>(.*?)<\/h[1-6]>/", $html, $matches);
+        return $matches[2];
+    }
 }
+
+$mount = new MountToStatic();
+
 
 $mount = new MountToStatic();

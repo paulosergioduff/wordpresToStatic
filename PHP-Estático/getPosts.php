@@ -4,7 +4,7 @@
 class WordpressToHtml {
     public function convert() {
         // Lê o conteúdo do json da API do Wordpress
-        $json = file_get_contents('https://fortplanos.com.br/wp-json/wp/v2/pages/');
+        $json = file_get_contents('https://fortplanos.com.br/wp-json/wp/v2/posts/');
         $posts = json_decode($json);
 
         // Percorre cada post do json
@@ -14,7 +14,7 @@ class WordpressToHtml {
             $html .= $post->content->rendered;
 
             // Salva o arquivo na pasta articles
-            $file = fopen('articles/' . $post->slug . '.html', 'w');
+            $file = fopen('posts/' . $post->slug . '.html', 'w');
             fwrite($file, $html);
             fclose($file);
 

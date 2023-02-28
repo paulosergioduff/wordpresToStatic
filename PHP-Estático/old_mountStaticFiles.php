@@ -7,8 +7,8 @@ class MountToStatic {
     }
 
     public function mount() {
-        $articles_path = "articles/";
-        $static_path = "static/";
+        $articles_path = "posts/";
+        $static_path = "static/blog/";
 
         $header = file_get_contents("components/html/header.html");
         $footer = file_get_contents("components/html/footer.html");

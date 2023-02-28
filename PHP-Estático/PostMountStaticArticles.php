@@ -12,7 +12,7 @@ class MountToStatic {
     public function mount() {
         $articles_path = "posts/";
         $static_path = "/static/blog/" . $this->rota;
-        $dependencies_path = $this->rota . "/dependencias_files/";
+        $dependencies_path = $this->rota . "../dependencias_files/";
 
         if (!file_exists($dependencies_path)) {
             mkdir($dependencies_path);
